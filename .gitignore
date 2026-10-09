@@ -1,6 +1,18 @@
+# Environment secrets — never commit
 .env
+
+# Python
 venv/
 __pycache__/
-node_modules/
 *.pyc
+*.pyo
+
+# Database
 backend/analytics.db
+
+# Node
+node_modules/
+
+# Build outputs
+dist/
+build/

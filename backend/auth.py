@@ -1,17 +1,19 @@
 import hashlib
+import os
 from datetime import datetime, timedelta
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import JWTError, jwt
+from dotenv import load_dotenv
 
-SECRET_KEY = "mobile-analytics-secret-key-2024"
+load_dotenv()
+
+SECRET_KEY = os.environ["SECRET_KEY"]
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 480  # 8 hours
 
-# Hardcoded credentials
-ADMIN_USERNAME = "admin"
-# sha256 of "admin123"
-ADMIN_PASSWORD_HASH = "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9"
+ADMIN_USERNAME = os.environ["ADMIN_USERNAME"]
+ADMIN_PASSWORD_HASH = os.environ["ADMIN_PASSWORD_HASH"]
 
 bearer_scheme = HTTPBearer()
 
